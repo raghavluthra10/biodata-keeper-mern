@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     res.send('hello world from the server router.js');
 })
 
-
+//register
 router.post('/register', async (req, res) => {
     const { name, email, phone, work, password, cpassword } = req.body 
 
@@ -57,6 +57,11 @@ router.post('/signin', async (req, res) => {
             const isMatch = await bcrypt.compare(password, userLogin.password)
 
             token = await userLogin.generateAuthToken()
+
+            res.cookie('jwtoken', token, {
+                expires: new Date(Date.now() + 25892000000),
+                httpOnly: true
+            })
 
             if(!isMatch) {
                 res.status(400).json({ error: 'user error' })
