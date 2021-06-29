@@ -6,6 +6,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import ErrorPage from './components/ErrorPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route  path='/contact' component={Contact} />
         <Route  path='/login' component={Login} />
         <Route  path='/signup' component={Signup} />
+        <Route component={ErrorPage} />
       </Switch>
     </Router>
     </>
